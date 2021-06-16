@@ -12,6 +12,7 @@ COPY --from=build /app /var/www/html/
 COPY docker/000-default.conf /etc/apache2/sites-available/000-default.conf
 COPY docker/php.ini "$PHP_INI_DIR/php.ini"
 
+COPY .env.example /var/www/html/.env
 RUN chmod 777 -R /var/www/html/storage/
 RUN echo "Listen 443" >> /etc/apache2/ports.conf
 RUN chown -R www-data:www-data /var/www/html/
