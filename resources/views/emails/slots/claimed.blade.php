@@ -36,6 +36,5 @@ No emails sent to scheduler@tutoringforall.org will be read. If you have any que
 @elseif ($role == 'student')
 No emails sent to scheduler@tutoringforall.org will be read. If you have any questions or information, please send it to your tutor or to info@tutoringforall.org.
 @endif
-{{ $slot['info'] }}
 @endcomponent
 @endcomponent
