@@ -4,7 +4,7 @@ COPY . /app
 RUN composer install --optimize-autoloader --no-dev
 
 FROM php:8-apache as prod
-RUN docker-php-ext-install pdo pdo_mysql
+RUN docker-php-ext-install pdo pdo_mysql mbstring fileinfo
 
 EXPOSE 443
 EXPOSE 587
