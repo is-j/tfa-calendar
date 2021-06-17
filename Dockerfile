@@ -14,7 +14,7 @@ COPY docker/php.ini "$PHP_INI_DIR/php.ini"
 
 COPY .env.example /var/www/html/.env
 RUN chmod 777 -R /var/www/html/storage/
-RUN echo "Listen 443" >> /etc/apache2/ports.conf
+RUN echo "Listen 8080" >> /etc/apache2/ports.conf
 RUN chown -R www-data:www-data /var/www/html/
 RUN php artisan key:generate && php artisan config:cache && php artisan route:cache && php artisan view:cache
 RUN a2enmod rewrite && a2enmod deflate && a2enmod headers
