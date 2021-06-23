@@ -4,7 +4,7 @@ COPY . /app
 RUN composer install --optimize-autoloader --no-dev
 
 FROM php:8-apache as prod
-RUN docker-php-ext-install pdo pdo_mysql mbstring fileinfo
+RUN docker-php-ext-install pdo pdo_mysql
 
 EXPOSE 443
 EXPOSE 587
@@ -12,7 +12,7 @@ COPY --from=build /app /var/www/html/
 COPY docker/000-default.conf /etc/apache2/sites-available/000-default.conf
 COPY docker/php.ini "$PHP_INI_DIR/php.ini"
 
-COPY .env.example /var/www/html/.env
+COPY .env.prod /var/www/html/.env
 RUN chmod 777 -R /var/www/html/storage/
 RUN echo "Listen 8080" >> /etc/apache2/ports.conf
 RUN chown -R www-data:www-data /var/www/html/
